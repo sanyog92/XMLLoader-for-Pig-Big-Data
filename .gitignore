@@ -1,0 +1,32 @@
+# Credentials & secrets
+.env
+config/youtube_token.pickle
+config/youtube_client_secrets.json
+
+# Generated output
+output/downloads/
+output/edited/
+output/thumbnails/
+output/processed_ids.json
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,51 @@
+# Web crawling & scraping
+yt-dlp>=2024.1.0
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+selenium>=4.15.0
+pytrends>=4.9.2
+feedparser>=6.0.11
+
+# Video editing
+moviepy>=1.0.3
+imageio>=2.31.0
+imageio-ffmpeg>=0.4.9
+numpy>=1.24.0
+opencv-python>=4.8.0
+
+# Image / thumbnail generation
+Pillow>=10.0.0
+cairosvg>=2.7.0
+
+# YouTube API
+google-api-python-client>=2.100.0
+google-auth-httplib2>=0.1.1
+google-auth-oauthlib>=1.1.0
+
+# Instagram (Graph API + unofficial)
+instagrapi>=2.0.0
+instabot>=0.117.0
+
+# Scheduling
+APScheduler>=3.10.4
+
+# AI content generation
+openai>=1.0.0
+anthropic>=0.20.0
+
+# Audio processing
+pydub>=0.25.1
+librosa>=0.10.1
+
+# Utilities
+python-dotenv>=1.0.0
+loguru>=0.7.2
+tqdm>=4.66.0
+httpx>=0.25.0
+aiohttp>=3.9.0
+asyncio-throttle>=1.0.2
+tenacity>=8.2.3
+pytz>=2023.3
+rich>=13.6.0
+click>=8.1.7
