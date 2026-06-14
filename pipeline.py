@@ -30,6 +30,7 @@ from config.settings import (
     THUMBNAIL_DIR,
 )
 from crawler.youtube_crawler import YouTubeCrawler, VideoMeta
+from crawler.zee5_crawler import ZEE5Crawler
 from crawler.trends import TrendsCrawler
 from downloader.video_downloader import VideoDownloader
 from editor.video_editor import VideoEditor
@@ -47,6 +48,7 @@ _PROCESSED_LOG = Path("output/processed_ids.json")
 class Pipeline:
     def __init__(self):
         self.yt_crawler = YouTubeCrawler()
+        self.zee5_crawler = ZEE5Crawler()
         self.trends = TrendsCrawler()
         self.downloader = VideoDownloader()
         self.editor = VideoEditor()
@@ -63,9 +65,11 @@ class Pipeline:
         logger.info("=" * 60)
         logger.info("Pipeline run started")
 
-        # 1. Discover
-        candidates = self.yt_crawler.discover()
-        logger.info(f"Discovered {len(candidates)} candidates")
+        # 1. Discover from multiple sources
+        yt_videos = self.yt_crawler.discover()
+        zee5_videos = self.zee5_crawler.discover()
+        candidates = yt_videos + zee5_videos
+        logger.info(f"Discovered {len(candidates)} candidates (YouTube: {len(yt_videos)}, ZEE5: {len(zee5_videos)})")
 
         # Filter already-processed
         fresh = [v for v in candidates if v.id not in self._processed]

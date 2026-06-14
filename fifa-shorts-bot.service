@@ -1,0 +1,56 @@
+# FIFA 2026 Shorts Bot — Linux systemd Service File
+#
+# Installation:
+#   1. Copy this file: sudo cp fifa-shorts-bot.service /etc/systemd/system/
+#   2. Edit the service file and update paths:
+#      - WorkingDirectory: your project path
+#      - ExecStart: path to python in your venv
+#      - User: your linux username
+#   3. Enable & start:
+#      sudo systemctl daemon-reload
+#      sudo systemctl enable fifa-shorts-bot
+#      sudo systemctl start fifa-shorts-bot
+#   4. Check status:
+#      sudo systemctl status fifa-shorts-bot
+#      sudo journalctl -fu fifa-shorts-bot -n 50
+
+[Unit]
+Description=FIFA 2026 Shorts Bot — Auto-posts FIFA content to YouTube Shorts & Instagram Reels
+Documentation=https://github.com/sanyog92/fifa-shorts-bot
+After=network.target
+Wants=network-online.target
+
+[Service]
+# Change these to match your setup:
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/fifa-shorts-bot
+
+# Path to python executable in virtual environment
+ExecStart=/home/ubuntu/fifa-shorts-bot/.venv/bin/python main.py
+
+# Restart on failure (every 60 seconds)
+Restart=on-failure
+RestartSec=60
+StartLimitInterval=600
+StartLimitBurst=5
+
+# Logging
+StandardOutput=append:/home/ubuntu/fifa-shorts-bot/logs/service.log
+StandardError=append:/home/ubuntu/fifa-shorts-bot/logs/service.log
+SyslogIdentifier=fifa-shorts-bot
+
+# Environment variables (if not in .env)
+Environment="PYTHONUNBUFFERED=1"
+Environment="PYTHONDONTWRITEBYTECODE=1"
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/home/ubuntu/fifa-shorts-bot/output /home/ubuntu/fifa-shorts-bot/logs
+
+[Install]
+WantedBy=multi-user.target

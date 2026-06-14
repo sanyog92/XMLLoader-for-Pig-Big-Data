@@ -49,3 +49,7 @@ tenacity>=8.2.3
 pytz>=2023.3
 rich>=13.6.0
 click>=8.1.7
+
+# Web scraping (for ZEE5 integration)
+selenium>=4.10.0
+webdriver-manager>=4.0.0

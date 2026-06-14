@@ -88,3 +88,9 @@ IG_DEFAULT_CAPTION_SUFFIX = (
     "\n\n#FIFA2026 #WorldCup2026 #Football #Soccer #Reels "
     "#WorldCup #FIFAWorldCup #Goals #Highlights"
 )
+
+# ── ZEE5 Integration ─────────────────────────────────────────
+ZEE5_EMAIL = os.getenv("ZEE5_EMAIL", "")
+ZEE5_PASSWORD = os.getenv("ZEE5_PASSWORD", "")
+ENABLE_ZEE5_CRAWL = os.getenv("ENABLE_ZEE5_CRAWL", "true").lower() == "true"
+ENABLE_ZEE5_UPLOAD = os.getenv("ENABLE_ZEE5_UPLOAD", "false").lower() == "true"
